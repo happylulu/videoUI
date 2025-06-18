@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Colors */
+  --color-bg-default: #ffffff;
+  --color-bg-subtle: #f8f8f8;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #666666;
+  --color-text-subtle: #a0a0a0;
+  --color-text-on-primary: #ffffff;
+  --color-primary-main: #1a1a1a;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Typography */
+  --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+  --size-xs: 12px;
+  --size-s: 14px;
+  --size-m: 16px;
+  --size-l: 20px;
+  --size-xl: 48px;
+  --size-xxl: 60px;
+  --line-height-body: 1.6;
+  --line-height-heading: 1.2;
+  --letter-spacing-normal: 0px;
+  --letter-spacing-wide: 1.5px;
+  --letter-spacing-extra-wide: 2.5px;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 48px;
+  --spacing-xxl: 96px;
+
+  /* Border Radius */
+  --radius-s: 4px;
+  --radius-m: 12px;
+  --radius-pill: 9999px;
+}
+
+.heading-1 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-xxl);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+
+.body-text {
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  font-size: var(--size-m);
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+}
+
+.button-primary {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-s);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  background-color: var(--color-primary-main);
+  color: var(--color-text-on-primary);
+  border-radius: var(--radius-pill);
+  padding: var(--spacing-m) var(--spacing-l);
+  transition: opacity 0.2s ease;
+}
+
+.button-primary:hover {
+  opacity: 0.85;
+}
+
+.overline {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-xs);
+  letter-spacing: var(--letter-spacing-extra-wide);
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
