@@ -23,16 +23,22 @@ export const HeroParallax = ({
 
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 }
 
-  const translateX = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]), springConfig)
-  const translateXReverse = useSpring(useTransform(scrollYProgress, [0, 1], [0, -1000]), springConfig)
-  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]), springConfig)
-  const opacity = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.2, 1]), springConfig)
-  const rotateZ = useSpring(useTransform(scrollYProgress, [0, 0.2], [20, 0]), springConfig)
-  const translateY = useSpring(useTransform(scrollYProgress, [0, 0.2], [-700, 500]), springConfig)
+  // Horizontal movement ONLY throughout the scroll
+  const translateX = useSpring(useTransform(scrollYProgress, [0, 1], [0, -600]), springConfig)
+  const translateXReverse = useSpring(useTransform(scrollYProgress, [0, 1], [0, 600]), springConfig)
+
+  // Early rotation effects - establish the view quickly then stay stable
+  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.1], [15, 0]), springConfig)
+  const rotateZ = useSpring(useTransform(scrollYProgress, [0, 0.1], [20, 0]), springConfig)
+  const opacity = useSpring(useTransform(scrollYProgress, [0, 0.1], [0.2, 1]), springConfig)
+
+  // ABSOLUTELY NO VERTICAL MOVEMENT until the very final transition
+  const translateY = useSpring(useTransform(scrollYProgress, [0.98, 1], [0, -200]), springConfig)
+
   return (
     <div
       ref={ref}
-      className="h-[120vh] overflow-visible antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[400vh] overflow-visible antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
       style={{ paddingTop: "40px", paddingBottom: "0px" }}
     >
       <Header />
@@ -40,8 +46,10 @@ export const HeroParallax = ({
         style={{
           rotateX,
           rotateZ,
-          translateY: useSpring(useTransform(scrollYProgress, [0, 0.8], [-200, 0]), springConfig),
+          translateY, // This stays at 0 until 98% scroll
           opacity,
+          // Fixed positioning - no early movement
+          paddingTop: "120px",
         }}
         className=""
       >

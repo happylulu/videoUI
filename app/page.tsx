@@ -7,6 +7,9 @@ import CardRainAnimation from "../components/card-rain-animation"
 import { RotateWords } from "../components/rotate-words"
 import { HeroParallaxDemo } from "../components/hero-parallax-demo"
 import BlogSection from "../components/blog-section"
+import Footer from "../components/footer"
+import NavDropdown from "../components/nav-dropdown"
+import Link from "next/link"
 
 export default function LandingPage() {
   const [searchValue, setSearchValue] = useState("")
@@ -14,6 +17,20 @@ export default function LandingPage() {
   const handlePopularTermClick = (term: string) => {
     setSearchValue(term)
   }
+
+  const exploreItems = [
+    { label: "Featured Projects", href: "/explore/featured" },
+    { label: "Artists of the Week", href: "/explore/artists-of-week" },
+    { label: "Explainer Videos", href: "/explore/explainer-videos" },
+    { label: "Music Videos", href: "/explore/music-videos" },
+    { label: "Animation", href: "/explore/animation" },
+    { label: "Advertising", href: "/explore/advertising" },
+  ]
+
+  const hireItems = [
+    { label: "Browse Artists", href: "/browse-artists" },
+    { label: "Post a Job", href: "/post-job" },
+  ]
 
   return (
     <div className="relative" style={{ backgroundColor: "var(--color-bg-default)" }}>
@@ -27,17 +44,22 @@ export default function LandingPage() {
           {/* Header */}
           <header style={{ padding: `${32}px ${24}px` }}>
             <nav className="max-w-7xl mx-auto flex items-center justify-between">
-              <div
-                className="text-2xl font-bold"
-                style={{
-                  color: "var(--color-text-primary)",
-                  fontFamily: "var(--font-heading)",
-                  fontWeight: "var(--weight-bold)",
-                }}
-              >
-                AI<span style={{ color: "var(--color-text-secondary)" }}>Artists</span>
-              </div>
+              <Link href="/">
+                <div
+                  className="text-2xl font-bold cursor-pointer"
+                  style={{
+                    color: "var(--color-text-primary)",
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: "var(--weight-bold)",
+                  }}
+                >
+                  AI<span style={{ color: "var(--color-text-secondary)" }}>Artists</span>
+                </div>
+              </Link>
+
               <div className="hidden md:flex items-center" style={{ gap: "var(--spacing-xl)" }}>
+                <NavDropdown label="Explore" items={exploreItems} />
+                <NavDropdown label="Hire an Artist" items={hireItems} />
                 <a
                   href="#"
                   className="transition-colors hover:opacity-85"
@@ -47,7 +69,7 @@ export default function LandingPage() {
                     fontSize: "var(--size-m)",
                   }}
                 >
-                  Browse
+                  Find Jobs
                 </a>
                 <a
                   href="#"
@@ -58,35 +80,29 @@ export default function LandingPage() {
                     fontSize: "var(--size-m)",
                   }}
                 >
-                  How it works
-                </a>
-                <a
-                  href="#"
-                  className="transition-colors hover:opacity-85"
-                  style={{
-                    color: "var(--color-text-secondary)",
-                    fontFamily: "var(--font-body)",
-                    fontSize: "var(--size-m)",
-                  }}
-                >
-                  Pricing
+                  Blog
                 </a>
               </div>
+
               <div className="flex items-center" style={{ gap: "var(--spacing-m)" }}>
-                <button
-                  className="transition-opacity hover:opacity-85"
-                  style={{
-                    color: "var(--color-text-secondary)",
-                    fontFamily: "var(--font-body)",
-                    fontSize: "var(--size-m)",
-                    background: "transparent",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
-                >
-                  Sign in
-                </button>
-                <button className="button-primary">Get started</button>
+                <Link href="/sign-in">
+                  <button
+                    className="transition-opacity hover:opacity-85"
+                    style={{
+                      color: "var(--color-text-secondary)",
+                      fontFamily: "var(--font-body)",
+                      fontSize: "var(--size-m)",
+                      background: "transparent",
+                      border: "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Sign in
+                  </button>
+                </Link>
+                <Link href="/signup">
+                  <button className="button-primary">Get started</button>
+                </Link>
               </div>
             </nav>
           </header>
@@ -121,7 +137,7 @@ export default function LandingPage() {
                       overflow: "hidden",
                     }}
                   >
-                    <span>Hire the world's top AI</span>
+                    <span>Explore the world's top AI</span>
                     <RotateWords text="" words={["Video Artists", "Filmmakers", "Storytellers"]} />
                   </h1>
                 </div>
@@ -289,6 +305,9 @@ export default function LandingPage() {
       <div className="relative">
         <BlogSection />
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   )
 }
