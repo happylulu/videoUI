@@ -3,14 +3,17 @@
 @tailwind utilities;
 
 :root {
-  /* Colors */
-  --color-bg-default: #ffffff;
-  --color-bg-subtle: #f8f8f8;
-  --color-text-primary: #1a1a1a;
-  --color-text-secondary: #666666;
-  --color-text-subtle: #a0a0a0;
-  --color-text-on-primary: #ffffff;
-  --color-primary-main: #1a1a1a;
+  /* Updated Color Palette with White Background */
+  --color-bg-default: #ffffff; /* Clean white background */
+  --color-bg-subtle: #f8f8f8; /* Light gray for subtle backgrounds */
+  --color-text-primary: #391758; /* Dark blue violet for primary text */
+  --color-text-secondary: #562283; /* Medium blue violet for secondary text */
+  --color-text-subtle: #89278e; /* Lighter purple for subtle text */
+  --color-text-on-primary: #ffffff; /* White text on colored backgrounds */
+  --color-primary-main: #9046cf; /* Blue Violet - main brand color */
+  --color-secondary: #cc59d2; /* Orchid - secondary brand color */
+  --color-accent: #f487b6; /* Persian Pink - accent color */
+  --color-highlight: #fde12d; /* School Bus Yellow - CTA/highlight */
   --color-white: #ffffff;
   --color-black: #000000;
 
@@ -62,21 +65,150 @@
   color: var(--color-text-secondary);
 }
 
+/* Text Color Classes Following Guidelines */
+.text-body-primary {
+  color: #1f2937; /* gray-800 for main body text */
+}
+
+.text-body-secondary {
+  color: #4b5563; /* gray-600 for secondary text */
+}
+
+.text-body-subtle {
+  color: #9ca3af; /* gray-400 for placeholder/disabled text */
+}
+
+/* Button Variants Following Color Guidelines */
 .button-primary {
   font-family: var(--font-body);
   font-weight: var(--weight-medium);
   font-size: var(--size-s);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
-  background-color: var(--color-primary-main);
-  color: var(--color-text-on-primary);
+  background-color: #9046cf; /* blue_violet-DEFAULT */
+  color: white;
   border-radius: var(--radius-pill);
   padding: var(--spacing-m) var(--spacing-l);
-  transition: opacity 0.2s ease;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(144, 70, 207, 0.3);
 }
 
 .button-primary:hover {
-  opacity: 0.85;
+  background-color: #a56ad9; /* blue_violet-600 */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(144, 70, 207, 0.4);
+}
+
+.button-secondary {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-s);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  background-color: #cc59d2; /* orchid-DEFAULT */
+  color: white;
+  border-radius: var(--radius-pill);
+  padding: var(--spacing-m) var(--spacing-l);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(204, 89, 210, 0.3);
+}
+
+.button-secondary:hover {
+  background-color: #d67cdb; /* orchid-600 */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(204, 89, 210, 0.4);
+}
+
+.button-outline-primary {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-s);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #9046cf; /* blue_violet-DEFAULT */
+  border: 2px solid #9046cf;
+  border-radius: var(--radius-pill);
+  padding: var(--spacing-m) var(--spacing-l);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.button-outline-primary:hover {
+  background-color: #e8daf5; /* blue_violet-900 */
+  color: #562283; /* blue_violet-300 */
+}
+
+.button-warning {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-s);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  background-color: #fde12d; /* school_bus_yellow-DEFAULT */
+  color: #1f2937; /* gray-800 for contrast */
+  border-radius: var(--radius-pill);
+  padding: var(--spacing-m) var(--spacing-l);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(253, 225, 45, 0.3);
+}
+
+.button-warning:hover {
+  background-color: #fde755; /* school_bus_yellow-600 */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(253, 225, 45, 0.4);
+}
+
+/* Background Utility Classes */
+.bg-accent-light {
+  background-color: #e8daf5; /* blue_violet-900 */
+}
+
+.bg-secondary-light {
+  background-color: #f5def6; /* orchid-900 */
+}
+
+.bg-tertiary-light {
+  background-color: #fde7f0; /* persian_pink-900 */
+}
+
+.bg-paper {
+  background-color: #f8f8f8; /* Light gray for cards that need subtle elevation */
+}
+
+/* Link Styles Following Guidelines */
+.link-primary {
+  color: #9046cf; /* blue_violet-DEFAULT */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link-primary:hover {
+  color: #a56ad9; /* blue_violet-600 */
+  text-decoration: underline;
+}
+
+/* Status/Alert Classes */
+.alert-warning {
+  background-color: #fff9d5; /* school_bus_yellow-900 */
+  color: #756601; /* school_bus_yellow-200 */
+  border: 1px solid #fde12d; /* school_bus_yellow-DEFAULT */
+  border-radius: var(--radius-m);
+  padding: var(--spacing-m);
+}
+
+.alert-info {
+  background-color: #e8daf5; /* blue_violet-900 */
+  color: #391758; /* blue_violet-200 */
+  border: 1px solid #bb8fe2; /* blue_violet-700 */
+  border-radius: var(--radius-m);
+  padding: var(--spacing-m);
 }
 
 .overline {

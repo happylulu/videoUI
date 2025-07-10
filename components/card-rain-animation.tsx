@@ -4,12 +4,12 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
 
 const cardData = [
-  { id: 1, title: "3D Animation", color: "#FF4757", delay: 0 },
-  { id: 2, title: "Motion Graphics", color: "#2ED573", delay: 0.8 },
-  { id: 3, title: "AI Generation", color: "#3742FA", delay: 1.6 },
-  { id: 4, title: "Visual Effects", color: "#FF6348", delay: 2.4 },
-  { id: 5, title: "Character Design", color: "#FFA502", delay: 3.2 },
-  { id: 6, title: "Explainer Videos", color: "#A55EEA", delay: 4.0 },
+  { id: 1, title: "3D Animation", color: "#9046cf", delay: 0 }, // blue_violet
+  { id: 2, title: "Motion Graphics", color: "#cc59d2", delay: 0.8 }, // orchid
+  { id: 3, title: "AI Generation", color: "#f487b6", delay: 1.6 }, // persian_pink
+  { id: 4, title: "Visual Effects", color: "#9046cf", delay: 2.4 }, // blue_violet
+  { id: 5, title: "Character Design", color: "#cc59d2", delay: 3.2 }, // orchid
+  { id: 6, title: "Explainer Videos", color: "#f487b6", delay: 4.0 }, // persian_pink
 ]
 
 type AnimationPhase = "rain" | "stack" | "fan" | "close" | "row" | "drop"

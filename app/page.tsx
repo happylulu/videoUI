@@ -7,13 +7,11 @@ import CardRainAnimation from "../components/card-rain-animation"
 import { RotateWords } from "../components/rotate-words"
 import { HeroParallaxDemo } from "../components/hero-parallax-demo"
 import BlogSection from "../components/blog-section"
+import SignInModal from "../components/sign-in-modal"
 
 export default function LandingPage() {
   const [searchValue, setSearchValue] = useState("")
-
-  const handlePopularTermClick = (term: string) => {
-    setSearchValue(term)
-  }
+  const [showSignInModal, setShowSignInModal] = useState(false)
 
   return (
     <div className="relative" style={{ backgroundColor: "var(--color-bg-default)" }}>
@@ -40,9 +38,8 @@ export default function LandingPage() {
               <div className="hidden md:flex items-center" style={{ gap: "var(--spacing-xl)" }}>
                 <a
                   href="#"
-                  className="transition-colors hover:opacity-85"
+                  className="link-primary transition-colors hover:opacity-85"
                   style={{
-                    color: "var(--color-text-secondary)",
                     fontFamily: "var(--font-body)",
                     fontSize: "var(--size-m)",
                   }}
@@ -51,9 +48,8 @@ export default function LandingPage() {
                 </a>
                 <a
                   href="#"
-                  className="transition-colors hover:opacity-85"
+                  className="link-primary transition-colors hover:opacity-85"
                   style={{
-                    color: "var(--color-text-secondary)",
                     fontFamily: "var(--font-body)",
                     fontSize: "var(--size-m)",
                   }}
@@ -62,9 +58,8 @@ export default function LandingPage() {
                 </a>
                 <a
                   href="#"
-                  className="transition-colors hover:opacity-85"
+                  className="link-primary transition-colors hover:opacity-85"
                   style={{
-                    color: "var(--color-text-secondary)",
                     fontFamily: "var(--font-body)",
                     fontSize: "var(--size-m)",
                   }}
@@ -74,9 +69,9 @@ export default function LandingPage() {
               </div>
               <div className="flex items-center" style={{ gap: "var(--spacing-m)" }}>
                 <button
-                  className="transition-opacity hover:opacity-85"
+                  onClick={() => setShowSignInModal(true)}
+                  className="text-body-secondary transition-opacity hover:opacity-85"
                   style={{
-                    color: "var(--color-text-secondary)",
                     fontFamily: "var(--font-body)",
                     fontSize: "var(--size-m)",
                     background: "transparent",
@@ -128,10 +123,9 @@ export default function LandingPage() {
 
                 {/* Subheader */}
                 <motion.p
-                  className="body-text"
+                  className="text-body-secondary"
                   style={{
                     fontSize: "var(--size-l)",
-                    color: "var(--color-text-secondary)",
                     fontFamily: "var(--font-body)",
                     fontWeight: "var(--weight-regular)",
                     lineHeight: "var(--line-height-body)",
@@ -143,7 +137,7 @@ export default function LandingPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 2.3, duration: 1 }}
                 >
-                  The future of video is here. Find the AI artist to create it for you.
+                  Where brands and artists meet to create iconic video production
                 </motion.p>
               </motion.div>
 
@@ -189,91 +183,6 @@ export default function LandingPage() {
                     </button>
                   </div>
                 </div>
-                <p
-                  className="overline"
-                  style={{
-                    marginTop: "var(--spacing-m)",
-                    textAlign: "center",
-                    textShadow: "0 1px 2px rgba(255,255,255,0.8)",
-                  }}
-                >
-                  Popular:{" "}
-                  <button
-                    onClick={() => handlePopularTermClick("RunwayML")}
-                    className="transition-colors hover:opacity-85"
-                    style={{
-                      color: "var(--color-text-primary)",
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      textDecoration: "underline",
-                      fontSize: "inherit",
-                      fontFamily: "inherit",
-                      fontWeight: "inherit",
-                      letterSpacing: "inherit",
-                      textTransform: "inherit",
-                    }}
-                  >
-                    RunwayML
-                  </button>
-                  ,{" "}
-                  <button
-                    onClick={() => handlePopularTermClick("VEO3")}
-                    className="transition-colors hover:opacity-85"
-                    style={{
-                      color: "var(--color-text-primary)",
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      textDecoration: "underline",
-                      fontSize: "inherit",
-                      fontFamily: "inherit",
-                      fontWeight: "inherit",
-                      letterSpacing: "inherit",
-                      textTransform: "inherit",
-                    }}
-                  >
-                    VEO3
-                  </button>
-                  ,{" "}
-                  <button
-                    onClick={() => handlePopularTermClick("ComfyUI")}
-                    className="transition-colors hover:opacity-85"
-                    style={{
-                      color: "var(--color-text-primary)",
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      textDecoration: "underline",
-                      fontSize: "inherit",
-                      fontFamily: "inherit",
-                      fontWeight: "inherit",
-                      letterSpacing: "inherit",
-                      textTransform: "inherit",
-                    }}
-                  >
-                    ComfyUI
-                  </button>
-                  ,{" "}
-                  <button
-                    onClick={() => handlePopularTermClick("3D Animation")}
-                    className="transition-colors hover:opacity-85"
-                    style={{
-                      color: "var(--color-text-primary)",
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      textDecoration: "underline",
-                      fontSize: "inherit",
-                      fontFamily: "inherit",
-                      fontWeight: "inherit",
-                      letterSpacing: "inherit",
-                      textTransform: "inherit",
-                    }}
-                  >
-                    3D Animation
-                  </button>
-                </p>
               </motion.div>
             </div>
           </main>
@@ -289,6 +198,9 @@ export default function LandingPage() {
       <div className="relative">
         <BlogSection />
       </div>
+
+      {/* Sign In Modal */}
+      <SignInModal isOpen={showSignInModal} onClose={() => setShowSignInModal(false)} />
     </div>
   )
 }
